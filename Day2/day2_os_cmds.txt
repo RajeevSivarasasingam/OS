@@ -1,0 +1,197 @@
+
+1) awk:is a powerful text processing tool used to process and analyze text files, 
+	especially those with structured data like CSV or tab-delimited files.
+	It operates by splitting each line into fields and allowing you to manipulate or extract specific parts of the data.
+
+		example:
+		abc.csv
+		name,age,city
+		Zara,17,New York
+		Ann,21,Los Angeles
+		Mary,24,Boston
+
+		awk -F, '{print $1}' abc.csv
+
+		output:
+		name
+		Zara
+		Ann
+		Mary
+
+		explanation:
+		awk: A tool for text processing.
+
+		-F,: Uses a comma as the separator.
+
+		{print $1}: Prints the first column of each line
+
+
+
+2)sed:(Stream Editor) is a powerful command-line tool used to perform basic text transformations on an input stream (file or input from a pipeline).
+ It is commonly used for tasks such as searching, replacing, deleting, and inserting text in files or text streams.
+
+   i) replace 
+     sed 's/old_text/new_text/' filename
+
+   example: To replace the word "bike" with "car" in a file called vehicle.txt
+   sed 's/bike/car/' vehicle.txt
+
+		output: 
+		::before replace
+		I drive bike.
+
+		::after replace
+		I drive car.
+
+  ii) delete (d)
+  Example: To delete the second line of a file
+   
+  sed '2d' file.txt
+ ::2d: Deletes the second line
+  
+		  output:
+		::before delete
+			Line 1
+			Line 2
+			Line 3
+			
+		::after delete
+			Line 1
+			Line 3
+	
+
+
+	
+3) find: The find command is used to search for files and directories on your system. 
+You can search based on various criteria like file name, type, size, and modification date.
+  
+  find /home/user -name "file.txt"
+
+4) ls -a:
+	ls: Lists files.
+
+	-a: Shows hidden files (files starting with .).
+
+
+ 
+ vi abc.txt   Use it to edit and create files in the terminal.
+ more abc.txt Use it to view files one screen at a time without editing.
+
+less abc.txt View the contents of a file, with the ability to scroll both forward and backward.
+
+file permisiion 
+chmod command
+
+
+4 = Read-only 
+
+5 = Read and execute 
+
+6 = Read and write 
+
+7 = Read, write, and execute 
+
+The first digit represents the owner's permissions.
+
+The second digit represents the group's permissions.
+
+The third digit represents the others' permissions.
+
+example  chmod 766 abc.txt
+Owner: the owner can do anything with the file.
+
+Group: Read and write 
+
+Others: Read and write 
+
+
+ls -ltr
+
+ls: Lists files with details, sorted by time.
+
+-l: Detailed view.
+
+-t: Sort by time.
+
+-r: Reverse order.
+
+
+
+::csv file:A simple text file storing data in rows and columns, separated by commas.
+
+::example csv file content named abc.csv 
+name,age,city
+Zara,17,New York
+Ann,21,Los Angeles
+Mary,24,Boston
+
+cut -d',' -f1,2 abc.csv
+output:
+name
+Zara
+Ann
+Mary
+
+Explaantion:
+-d as delimiter:
+
+In tools like cut or awk, -d is used to specify the delimiter that separates fields in a text file.
+ For example, in a CSV file, the delimiter is usually a comma (,).
+
+-f1,2: Extracts the first and second columns.
+
+::display the first 3 lines of the abc.csv file
+
+head -3 xyz.csv
+
+output:
+name,age,city
+Zara,17,New York
+Ann,21,Los Angeles
+
+
+
+explanation: 
+head: The head command is used to display the beginning of a file.
+
+-3: This option specifies that you want to display the first 3 lines of the file.
+
+
+::display the last 2 lines of the abc.csv file.
+
+output:
+Ann,21,Los Angeles
+Sara,18,london
+
+explanation:
+tail: The tail command is used to display the end of a file.
+
+-2: Displays the last 2 lines.
+cut -d, -f1,2 abc.csv > new_abc.csv
+
+output:
+will result in a new_abc.csv with the following content:
+name,age
+Zara,17
+Ann,21
+Mary,24
+
+Explanation:
+Extracts the first and second columns.
+
+> saves the output to new_abc.csv.
+
+::Find the number of columns in a CSV file:
+
+awk -F, '{print NF; exit}' abc.csv
+
+output: 3
+
+
+Explantion:
+
+-F,: Uses a comma as the separator.
+
+NF: Prints the number of columns in the first row.
+
+
