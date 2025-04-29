@@ -1,0 +1,272 @@
+//1)write a code for small astrology based on your life path number for that get date of birth from user then calculate life path number.
+(use switch case)
+
+example:-
+date:23
+
+calculator for life path number:
+a=date%10   3
+b=date/10   2
+c=a+b   5
+
+
+if life path number:
+1:Lucky
+2:Carefuly do your work
+3:Storger
+4:Happy
+5:Can get help
+6:Doubt
+7:Sad
+8:Like
+9:Courage
+
+echo "Enter the birthdate:"
+read date
+a=$(($date%10))
+b=$(($date/10))
+c=$(($a+$b))
+if [ $c -gt 9 ]; then
+ d=$(($c%10))
+ e=$(($c/10))
+ f=$(($d+$e))
+ 
+ case $f in
+1) echo "Lucky";;
+2) echo "Carefully do your work";;
+3) echo "stronger";;
+4) echo "happy";;
+5) echo "can you help me";;
+6) echo "doubt";;
+7) echo "sad";;
+8) echo "like";;
+9) echo "courage";;
+*) echo "error";;
+
+esac
+
+else
+case $c in
+1) echo "Lucky";;
+2) echo "Carefully do your work";;
+3) echo "stronger";;
+4) echo "happy";;
+5) echo "can you help me";;
+6) echo "doubt";;
+7) echo "sad";;
+8) echo "like";;
+9) echo "courage";;
+*) echo "error";;
+
+esac
+
+fi
+
+
+
+
+output:
+Enter the birthdate:
+23
+Can get help
+
+read varname     // Reads user input and stores it in 'varname'
+$(())            // Performs arithmetic operations (e.g., $(($x + $y)))
+case ... esac    // Executes a block of code based on variable value
+%                // Modulus operator (remainder after division)
+
+
+
+Syntax for FOR LOOP
+
+for variable in list
+do
+commands
+done
+
+Syntax for WHILE LOOP
+while[condition]
+do
+commands
+done
+
+Syntax for nested for loop
+for((variable=0; variable<=input; variable++))
+do
+for((variable=0;variable<=input; variable++))
+do
+commands
+done
+done
+
+
+
+//2)Give list of numbers then calculate the summation and multiplication using for loop
+Example:-
+1 2 3 4 5 
+summation=15
+multiplication=120
+
+
+sum=0
+mult=1
+for i in 1 2 3 4 5;
+do
+sum=$(($sum+$i))
+mult=$(($mult*i))
+done
+echo "SUM:$sum"
+echo "MULT:$mult"
+
+output:
+SUM:15
+MULT:120
+
+
+
+//3)print the integers from 1 to 10 using while loop
+
+i=1
+while [ $i -le 10 ];
+do
+echo $i
+i=$(($i+1))
+done
+
+
+output:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+//4)print  below pattern  using nested loop
+columns=7, rows=7
+
+i)
+*
+* *
+* * *
+* * * *
+* * * * *
+* * * * * *
+* * * * * * *
+
+for((i=1;i<=7;i++))
+do
+for((j=0;j<i;j++))
+do
+echo -n "*"
+done
+echo 
+done
+
+
+
+ii)
+
+* * * * * * *
+* * * * * * 
+* * * * * 
+* * * * 
+* * * 
+* * 
+*
+
+for((i=1;i<=7;i++))
+do
+for((j=7;j>i;j--))
+do
+echo -n "*"
+done
+echo 
+done
+
+
+//
+for (( i=1; i<=7; i++ ))   // Outer loop, runs 7 times
+for (( j=7; j>=i; j-- ))   // Inner loop, prints stars decreasingly based on outer loop's 'i'
+echo -n                   // Prints without a newline
+
+
+
+
+
+iii)
+1
+2 2
+3 3 3
+4 4 4 4
+5 5 5 5 5
+6 6 6 6 6 6
+
+for ((i=1;i<=6;i++))
+dofor((j=1;j<=i;j--))
+do
+echo -n "$i"
+done
+echo ""
+done
+
+
+for ((i=1; i<=6; i++))   // Outer loop, runs 6 times
+for ((j=i; j>=1; j--))   // Inner loop, prints 'i' repeatedly, decreasing as 'i' increases
+echo -n                 // Prints without a newline
+
+
+iv)
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+1 2 3 4 5 6
+
+for ((i=1;i<=6;i++))
+dofor((j=1;j<=i;j++))
+do
+echo -n "$j"
+done
+echo 
+done
+
+for ((i=1; i<=6; i++))   // Outer loop, runs 6 times, controlling the number of rows
+for ((j=1; j<=i; j++))   // Inner loop, prints numbers from 1 to 'i'
+echo -n                 // Prints without a newline
+
+
+v)
+
+      *
+	 * *
+	* * *
+   * * * *
+  * * * * *
+  
+  
+ for ((i=1; i<=5; i++))
+do
+    for ((j=4; j>=i; j--))
+    do
+        echo -n " "
+    done
+    for ((k=1; k<=i; k++))
+    do
+        echo -n " * " 
+    done
+    echo
+done
+
+   
+
+for ((i=1; i<=5; i++))   // Outer loop, runs 5 times, controlling the number of rows
+for ((j=4; j>=i; j--))   // Prints spaces before the asterisks for right alignment
+for ((k=1; k<=i; k++))   // Prints the asterisks, increasing with each row
+echo -n                 // Prints without a newline
