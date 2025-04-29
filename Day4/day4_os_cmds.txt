@@ -1,0 +1,76 @@
+
+
+//calender
+[2021ict102@fedora ~]$ cal
+     March 2025
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31
+
+
+//present work directory(path)
+[2021ict102@fedora ~]$ pwd
+/home/2021ict102
+
+
+//current available file
+[2021ict102@fedora ~]$ ls
+sharan.tsv
+
+
+//All of the files
+[2021ict102@fedora ~]$ ls -a
+.  ..  .abc.tsv.swp  .bash_history  .bash_logout  .bash_profile  .bashrc  .mozilla  sharan.tsv
+
+
+//All files with date & time clearly
+[2021ict102@fedora ~]$ ls -ltr
+total 4
+-rw-r--r--. 1 2021ict102 2021ict102 67 Mar 21 15:29 sharan.tsv
+
+
+//Today date
+[2021ict102@fedora ~]$ date +%d
+24
+
+
+//Year
+[2021ict102@fedora ~]$ date +%y
+25
+
+
+//current day 
+[2021ict102@fedora ~]$ date +%a
+Mon
+
+
+//current day(full)
+[2021ict102@fedora ~]$ date +%A
+Monday
+
+
+//current month
+[2021ict102@fedora ~]$ date +%b
+Mar
+
+
+//current month(full)
+[2021ict102@fedora ~]$ date +%B
+March
+
+
+//current month in numbers(march)
+[2021ict102@fedora ~]$ date +%m
+03
+
+
+//current hour in 24 hours format
+[2021ict102@fedora ~]$ date +%H
+11
+
+
+
