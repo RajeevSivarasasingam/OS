@@ -1,0 +1,167 @@
+
+mkdir criteria_1
+cd criteria_1
+	mkdir standard_1
+	mkdir standard_2
+	mkdir standard_3
+	mkdir standard_4
+cd..
+
+mkdir criteria_2
+cd criteria_2
+	mkdir standard_1
+	mkdir standard_2
+	mkdir standard_3
+	mkdir standard_4
+cd..
+
+mkdir criteria_3
+cd criteria_3
+	mkdir standard_1
+	mkdir standard_2
+	mkdir standard_3
+cd..
+
+mkdir criteria_4
+cd criteria_4
+	mkdir standard_1
+	mkdir standard_2
+	mkdir standard_3
+	mkdir standard_4
+cd..
+mkdir criteria_5
+cd criteria_5
+	mkdir standard_1
+	mkdir standard_2
+	mkdir standard_3
+cd..
+
+Explanation:
+
+mkdir criteria_1
+Creates a new folder named criteria_1
+
+cd criteria_1
+Moves into the criteria_1 folder
+
+mkdir standard_1
+Creates a folder named standard_1 inside criteria_1
+
+cd..
+Moves back to the previous folder (outside criteria_1)
+
+
+
+//Changes the text color to blue with a black background.
+color 1
+
+
+//change background, txt color
+Changes the text color to light red (C)with a red background (4)
+color c4
+
+//to get color information
+color ? 
+
+0 = Black
+
+1 = Blue
+
+2 = Green
+
+3 = Aqua
+
+4 = Red
+
+5 = Purple
+
+6 = Yellow
+
+7 = White
+
+8 = Gray
+
+9 = Light Blue
+
+A = Light Green
+
+B = Light Aqua
+
+C = Light Red
+
+D = Light Purple
+
+E = Light Yellow
+
+F = Bright White
+color 0A changes the background to black and the text to light green.
+
+color 4F changes the background to red and the text to bright white.
+
+
+
+@echo off 
+echo username:%username%
+pause
+This prints the username of the person currently logged into the system
+
+
+echo windows version:
+ver
+pause
+The ver command displays the version of Windows installed on the system
+
+
+echo Current Time: %TIME%
+pause
+This command prints the current system time
+
+
+
+echo Day : %date%
+pause
+This command prints the current date
+
+
+set Age\p=How old are you
+pause
+This will prompt the user to input their age, and the value will be stored in the variable Age
+
+
+
+help
+dir
+dir/?
+dir/a
+dir/w
+dir *.txt
+cd desktop
+ATTRIB shara.txt
+find *.txt
+find *.csv
+
+Explanation 
+help : Shows a list of available commands in the Command Prompt
+
+dir : Displays all files and folders in the current directory
+
+dir/w : Displays files and folders in a wide format
+
+dir/? :  Shows help information about the dir command.
+
+dir/a : Shows all files, including hidden and system files.
+
+dir *.txt : Lists all .txt files in the current folder
+
+cd desktop :  Moves into the Desktop folder
+
+ATTRIB shara.txt : Shows file attributes (like hidden, read-only) for shara.txt
+
+find *.txt :  Search inside all .txt files
+
+find *.csv : Search inside all .csv files
+
+
+
+
+ 
