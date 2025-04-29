@@ -1,0 +1,53 @@
+:: Turns off the display of commands  
+@echo off  
+
+
+:: Shows the current system date  
+echo %date%  
+
+
+:: Gets the current year from the system date  
+set current_year=%date:~10,4%  
+echo Current year is %current_year%  
+
+
+:: Gets the current month from the system date  
+set current_month=%date:~4,2%  
+echo Current month is %current_month%  
+
+
+:: Gets the current day (date) from the system date  
+set current_date=%date:~7,2%  
+echo Current date is %current_date%  
+
+
+:: Gets the day name from the system date  
+set day_name=%date:~0,3%  
+echo Today is %day_name%  
+
+
+
+:: Stores month names and extracts the current month name  
+for /f "tokens=%current_month% delims= " %%A in ("January February March April May June July August September October November December")
+ do set month_name=%%A  
+echo Current month name is %month_name%  
+
+
+
+:: Calculates the day of the year based on the current date and month  
+set /a current_day_of_year = ((%current_month%-1)*30) + %current_date%  
+echo Current day of year is %current_day_of_year%  
+
+
+
+:: Calculates the week number of the year  
+set /a week_of_year = (%current_day_of_year% + 6) / 7  
+echo Week of Year is %week_of_year%  
+
+
+
+:: Calculates the week number within the current month  
+set /a week_of_month = (%current_date% + 6) / 7  
+echo Week of Month is %week_of_month%  
+
+pause  
