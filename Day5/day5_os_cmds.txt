@@ -1,0 +1,203 @@
+// Create an empty file named 'dataFile.csv'
+[2021ict102@fedora ~]$ touch dataFile.csv
+
+// Open 'dataFile.csv' in the vi editor for editing
+[2021ict102@fedora ~]$ vi dataFile.csv
+
+ID,Name,Age,Salary,Department
+101,Alice,0,70000,data science
+102,Bob,25,50000,engineering
+103,Charlie,5,80000,data science
+104,David,40,90000,HR
+105,Eve,28,60000,engineering
+106,Frank,38,75000,HR
+107,Grace,27,72000,data science
+108,Hank,32,68000,engineering
+109,Ivy,29,62000,data science
+110,Jack,31,71000,HR
+
+// View the contents of 'dataFile.csv' one screen at a time (read-only)
+[2021ict102@fedora ~]$ less dataFile.csv
+
+ // Display the last 3 lines of 'dataFile.csv'
+[2021ict102@fedora ~]$ tail -3 dataFile.csv
+108,Hank,32,68000,engineering
+109,Ivy,29,62000,data science
+110,Jack,31,71000,HR
+
+// Search for lines containing the word 'engineering' in 'dataFile.csv'
+[2021ict102@fedora ~]$ grep 'engineering' dataFile.csv
+102,Bob,25,50000,engineering
+105,Eve,28,60000,engineering
+108,Hank,32,68000,engineering
+
+ // Count the number of lines in 'dataFile.csv'
+[2021ict102@fedora ~]$ wc -l dataFile.csv
+11 dataFile.csv
+
+// Print the number of fields (columns) in the first line of 'dataFile.csv', using comma as the separator
+[2021ict102@fedora ~]$ awk -F, '{print NF;exit}' dataFile.csv
+5
+
+// Display the 3rd line of 'dataFile.csv'
+[2021ict102@fedora ~]$ head -n3 dataFile.csv|tail -n1
+102,Bob,25,50000,engineering
+
+// Print the 3rd field (column) from each line of 'dataFile.csv', using comma as the separator
+[2021ict102@fedora ~]$ awk -F, '{print $3}' dataFile.csv
+Age
+0
+25
+5
+40
+28
+38
+27
+32
+29
+31
+
+// Extract and display the 3rd field (column) from each line of 'dataFile.csv', using comma as the delimiter
+[2021ict102@fedora ~]$ cut -d, -f3 dataFile.csv
+Age
+0
+25
+5
+40
+28
+38
+27
+32
+29
+31
+
+// Display the 7th line of 'dataFile.csv'
+[2021ict102@fedora ~]$ head -n7 dataFile.csv|tail -n1
+106,Frank,38,75000,HR
+
+ // Display the last 3 lines of 'dataFile.csv'
+[2021ict102@fedora ~]$ tail -n3 dataFile.csv
+108,Hank,32,68000,engineering
+109,Ivy,29,62000,data science
+110,Jack,31,71000,HR
+
+ // Extract the 3rd and 4th fields (columns) from 'dataFile.csv' and save them into 'newFile.csv'
+[2021ict102@fedora ~]$ cut -d, -f3,4 dataFile.csv > newFile.csv
+
+
+[2021ict102@fedora ~]$ vi dataFile.csv
+[2021ict102@fedora ~]$ vi newFile.csv
+Age,Salary
+0,70000
+25,50000
+5,80000
+40,90000
+28,60000
+38,75000
+27,72000
+32,68000
+29,62000
+31,71000
+
+
+ // Print the 3rd and 4th fields (columns) from each line of 'dataFile.csv', using comma as the separator
+Age Salary
+[2021ict102@fedora ~]$ awk -F, '{print$3, $4}' dataFile.csv
+Age Salary
+0 70000
+25 50000
+5 80000
+40 90000
+28 60000
+38 75000
+27 72000
+32 68000
+29 62000
+31 71000
+
+// Extract the 4th field (column) from 'dataFile.csv' and sort the output
+[2021ict102@fedora ~]$ awk -F, '{print $4}' dataFile.csv | sort
+50000
+60000
+62000
+68000
+70000
+71000
+72000
+75000
+80000
+90000
+Salary
+
+// Extract the 4th field (column) from 'dataFile.csv' and sort the output in reverse order
+[2021ict102@fedora ~]$ awk -F, '{print $4}' dataFile.csv | sort -r
+Salary
+90000
+80000
+75000
+72000
+71000
+70000
+68000
+62000
+60000
+50000
+
+
+ // Sort 'dataFile.csv' based on the 4th column (numerically) using a comma as the delimiter
+[2021ict102@fedora ~]$ sort -t',' -k4,4n dataFile.csv
+ID,Name,Age,Salary,Department
+102,Bob,25,50000,engineering
+105,Eve,28,60000,engineering
+109,Ivy,29,62000,data science
+108,Hank,32,68000,engineering
+101,Alice,0,70000,data science
+110,Jack,31,71000,HR
+107,Grace,27,72000,data science
+106,Frank,38,75000,HR
+103,Charlie,5,80000,data science
+104,David,40,90000,HR
+
+ // Sort 'dataFile.csv' based on the 4th column (numerically, in reverse order) using a comma as the delimiter
+[2021ict102@fedora ~]$ sort -t',' -k4,4nr dataFile.csv
+104,David,40,90000,HR
+103,Charlie,5,80000,data science
+106,Frank,38,75000,HR
+107,Grace,27,72000,data science
+110,Jack,31,71000,HR
+101,Alice,0,70000,data science
+108,Hank,32,68000,engineering
+109,Ivy,29,62000,data science
+105,Eve,28,60000,engineering
+102,Bob,25,50000,engineering
+ID,Name,Age,Salary,Department
+
+
+// Sort 'dataFile.csv' based on the 4th column in reverse order using a comma as the delimiter
+[2021ict102@fedora ~]$ sort -t',' -k4,4 -r dataFile.csv
+ID,Name,Age,Salary,Department
+104,David,40,90000,HR
+103,Charlie,5,80000,data science
+106,Frank,38,75000,HR
+107,Grace,27,72000,data science
+110,Jack,31,71000,HR
+101,Alice,0,70000,data science
+108,Hank,32,68000,engineering
+109,Ivy,29,62000,data science
+105,Eve,28,60000,engineering
+102,Bob,25,50000,engineering
+
+
+// Sort 'dataFile.csv' first by the 2nd column and then by the 4th column in reverse order, using a comma as the delimiter
+[2021ict102@fedora ~]$ sort -t',' -k2,2 -k4,4 -r dataFile.csv
+ID,Name,Age,Salary,Department
+110,Jack,31,71000,HR
+109,Ivy,29,62000,data science
+108,Hank,32,68000,engineering
+107,Grace,27,72000,data science
+106,Frank,38,75000,HR
+105,Eve,28,60000,engineering
+104,David,40,90000,HR
+103,Charlie,5,80000,data science
+102,Bob,25,50000,engineering
+101,Alice,0,70000,data science
