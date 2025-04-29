@@ -1,0 +1,277 @@
+//Q1)
+::print multiplication table using for loop
+::1*2=2
+::2*2=4
+[2021ict102@fedora ~]$ touch Multable.sh
+[2021ict102@fedora ~]$ vi Multable.sh
+[2021ict102@fedora ~]$ chmod 777 Multable.sh
+[2021ict102@fedora ~]$ ./Multable.sh
+
+Print multiplication table from 1 to 10
+1 * 1 = 1
+1 * 2 = 2
+1 * 3 = 3
+1 * 4 = 4
+1 * 5 = 5
+1 * 6 = 6
+1 * 7 = 7
+1 * 8 = 8
+1 * 9 = 9
+1 * 10 = 10
+
+2 * 1 = 2
+2 * 2 = 4
+2 * 3 = 6
+2 * 4 = 8
+2 * 5 = 10
+2 * 6 = 12
+2 * 7 = 14
+2 * 8 = 16
+2 * 9 = 18
+2 * 10 = 20
+
+3 * 1 = 3
+3 * 2 = 6
+3 * 3 = 9
+3 * 4 = 12
+3 * 5 = 15
+3 * 6 = 18
+3 * 7 = 21
+3 * 8 = 24
+3 * 9 = 27
+3 * 10 = 30
+
+4 * 1 = 4
+4 * 2 = 8
+4 * 3 = 12
+4 * 4 = 16
+4 * 5 = 20
+4 * 6 = 24
+4 * 7 = 28
+4 * 8 = 32
+4 * 9 = 36
+4 * 10 = 40
+
+5 * 1 = 5
+5 * 2 = 10
+5 * 3 = 15
+5 * 4 = 20
+5 * 5 = 25
+5 * 6 = 30
+5 * 7 = 35
+5 * 8 = 40
+5 * 9 = 45
+5 * 10 = 50
+
+6 * 1 = 6
+6 * 2 = 12
+6 * 3 = 18
+6 * 4 = 24
+6 * 5 = 30
+6 * 6 = 36
+6 * 7 = 42
+6 * 8 = 48
+6 * 9 = 54
+6 * 10 = 60
+
+7 * 1 = 7
+7 * 2 = 14
+7 * 3 = 21
+7 * 4 = 28
+7 * 5 = 35
+7 * 6 = 42
+7 * 7 = 49
+7 * 8 = 56
+7 * 9 = 63
+7 * 10 = 70
+
+8 * 1 = 8
+8 * 2 = 16
+8 * 3 = 24
+8 * 4 = 32
+8 * 5 = 40
+8 * 6 = 48
+8 * 7 = 56
+8 * 8 = 64
+8 * 9 = 72
+8 * 10 = 80
+
+9 * 1 = 9
+9 * 2 = 18
+9 * 3 = 27
+9 * 4 = 36
+9 * 5 = 45
+9 * 6 = 54
+9 * 7 = 63
+9 * 8 = 72
+9 * 9 = 81
+9 * 10 = 90
+
+10 * 1 = 10
+10 * 2 = 20
+10 * 3 = 30
+10 * 4 = 40
+10 * 5 = 50
+10 * 6 = 60
+10 * 7 = 70
+10 * 8 = 80
+10 * 9 = 90
+10 * 10 = 100
+
+
+echo Print multiplication table from 1 to 10
+for i in {1..10}
+do
+    for j in {1..10}
+    do
+        result=$((i * j))
+        echo "$i * $j = $result"
+    done
+    echo "" 
+done
+
+
+//input the multiply number
+Enter a number
+10
+Multiplication Table of 10
+1 x 10 =  10
+2 x 10 =  20
+3 x 10 =  30
+4 x 10 =  40
+5 x 10 =  50
+6 x 10 =  60
+7 x 10 =  70
+8 x 10 =  80
+9 x 10 =  90
+10 x 10 =  100
+11 x 10 =  110
+12 x 10 =  120
+
+::Code
+echo "Enter a number"
+read num
+echo "Multiplication Table of $num"
+for((i=1;i<=12;i++))
+do
+mul=$(($i*$num))
+echo "$i x $num = " $mul
+done
+
+-----------------------------------------
+
+//Q2)
+
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+[2021ict102@fedora ~]$ touch star.sh
+[2021ict102@fedora ~]$ vi star.sh
+[2021ict102@fedora ~]$ chmod 777 star.sh
+[2021ict102@fedora ~]$ ./star.sh
+Enter the no of rows:
+5
+
+echo "Enter the no of rows: "
+read rows
+
+for((i=1; i<=rows;i++))
+do
+for((j=i;j<rows;j++))
+do
+echo -n " "
+done
+for((k=1; k<=((2*i-1)); k++))
+do
+echo -n "*"
+done
+echo
+done
+
+for((i=rows-1; i>=1; i--))
+do
+for((j=rows-1;j>=i;j--))
+do
+echo -n " "
+done
+for((k=1;k<=((2*i-1));k++))
+do
+echo -n "*"
+done
+echo
+done
+
+
+
+//rectangle pattern
+*****
+*   *
+*   *
+*   *
+*****
+for((i=1;i,=5;i++))
+do
+echo"*"
+done
+  for((j=i;j<=5;j++))
+  do echo -n " "
+done
+
+----------------------------------------
+
+//03)Fibonacci series
+	::0 1 1 2 3 5 8 13 21 34
+	::sum of the series: 88
+	
+
+a=0
+b=1
+sum=0
+
+echo "Fibonacci Series:"
+
+for ((i=0; i<10; i++))
+do
+    echo -n "$a "
+    sum=$(($sum + $a))
+    temp=$b
+    b=$(($a + $b))
+    a=$temp
+done
+
+echo
+echo "Sum of the series: $sum"
+
+---------------------------------------------------
+
+//Q4)sum of prime numbers between 1 and 100 is : 1060
+
+sum=0
+// Function to check if a number is prime
+is_prime() {
+    num=$1
+    if [ "$num" -le 1 ]; then
+        return 1
+    fi
+    for ((i=2; i*i<=num; i++)); do
+        if (( num % i == 0 )); then
+            return 1
+        fi
+    done
+    return 0
+}
+
+//Loop through numbers 1 to 100
+for ((n=1; n<=100; n++)); do
+    if is_prime "$n"; then
+        sum=$((sum + n))
+    fi
+done
+
+echo "Sum of prime numbers between 1 and 100 is: $sum"
