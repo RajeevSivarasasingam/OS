@@ -1,0 +1,225 @@
+//1)Get the calender and date
+// Display the current month's calendar in a simple format (similar to what you'd see in a terminal like PuTTY)
+
+cal
+  April 2025
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30
+
+
+// Display the current date and time in the system's default format
+date
+Fri Apr  4 01:40:03 PM +0530 2025
+
+
+//2)Get the student name and marks for 3 subjects from user then calculate  the "Total" and "Average"
+::output:-
+::Enter the name:Isuru
+::Enter the  marks for subject1:80
+::Enter the  marks for subject2:90
+::Enter the  marks for subject3:70
+::Total=240
+::Average=80
+
+//touch queans.sh
+//vi queans.sh
+//type i  to insert
+		
+
+echo "Who are you?"   // Prompt the user to enter a name
+read name     // Read the name input from the user
+
+echo "Enter Number1"     // Prompt the user to enter the first number value
+read x       // Read the x input from the user
+
+echo "Enter Number2"   // Prompt the user to enter the second number value
+read y    // Read the y input from the user
+
+echo "Enter Number3"	// Prompt the user to enter the third number value
+read z	// Read the z input from the user
+````````````````````````````````````````````````
+sum=$(($x+$y+$z))	// Calculate the total of x,y,z
+avg=$((sum/3))	// Calculate the average of the x,y,z
+echo "Hi" $name
+echo "Summation" $sum	// Display the total marks
+echo "Average" $avg	  // Display the average marks
+
+	output:
+
+Enter name: 
+Rajeev
+Number1: 
+95
+Number2: 
+80
+Number3: 
+75
+Summation:  250
+Average:  78
+
+
+
+//3) create calculator with arithmetic operation
+::output:-
+::Enter the first number:4
+::Enter the second number:2
+::Summation:6
+::Substraction:2
+::Division:2
+::Multiplication:8
+
+//answer
+
+echo "Enter the num1: "	// Prompt the user to enter the first number (num1)
+read num1	 // Read the num1 input from the user
+
+echo "Enter the num2: "	// Prompt the user to enter the second number (num2)
+read num2	 // Read the num2 input from the user
+
+summation=$((num1+num2))	// Calculate the sum of num1 and num2
+substraction=$((num1-num2))	// Calculate the difference (num1 - num2)
+Division=$((num1/num2))	 // Calculate the division of num1 by num2
+Multiplication=$((num1*num2))	// Calculate the product of num1 and num2
+
+echo "summation is" $summation
+echo "substraction is" $substraction
+echo "Division is" $Division
+echo "Multiplication is" $Multiplication
+
+
+
+output:
+
+num1: 
+10
+num2
+5
+summation: 15
+substraction: 5
+multiplication: 50
+division: 2
+
+
+//4) Get  the days based on the input number
+::output:
+::Enter the number:5
+::Friday
+:: Enter the number:-9
+::Unrecognized number
+
+//answer
+
+echo "Enter the number: "	// Prompt the user to enter a number
+read number	// Read the input number from the user
+
+case $number in	// Start a case statement to handle different numbers
+1)echo "Monday";;// If the number is 1, display 'monday'
+2)echo "Tuesday";;// If the number is 2, display 'tuesday'
+3)echo "Wednesday";;// If the number is 3, display 'Wednesday'
+4)echo "Thursday";; // If the number is 4, display 'thursday'
+5)echo "Friday";;// If the number is 5, display 'friday'
+6)echo "Saturday";;// If the number is 6, display 'saturday'
+7)echo "Sunday";;// If the number is 7, display 'sunday'
+)echo "Invalid input";; // If the number is not between 1 and 7, display 'invalid'
+esac	// End of the case statement
+
+
+output:
+
+Number: 
+2
+Tuesday
+
+
+
+//5)verify whether your user name is correct or not (use your name as a input)
+::output:
+::Enter the name:
+::Rajeev
+::User name is correctEnter user name:
+::pasi
+::user name is incorrect
+
+uname="Rajeev" // Define a variable 'name' and assign the value 'Rajeev'
+echo "Enter the username: "	// Prompt the user to enter a username
+read username	 // Read the username input from the user
+if [ "$uname" == "$username" ]; then	// Check if the entered username matches the value of 'name'
+echo "Username is correct"	// If they match, display 'Username is correct'
+else
+echo "username is incorrect"	// If they don't match, display 'username is incorrect'
+fi	 // End the if-else statement
+
+output:
+
+Enter username
+Rajeev
+Username is correct
+
+
+Enter username
+Pasi
+username is incorrect
+
+
+
+
+//6)output:-Enter two numbers
+:: 7 5
+::7 is greater than 5
+
+
+echo "Num1: "           // Prompt the user to enter the first number (num1)
+read num1              // Read the num1 input from the user
+
+echo "num2"             // Prompt the user to enter the second number (num2)
+read num2              // Read the num2 input from the user
+
+if [ $num1 -gt $num2 ]; then  // Check if num1 is greater than num2 using '-gt' (greater than)
+    echo "$num1 is greater than $num2" // If true, display that num1 is greater
+else
+    echo "$num2 is greater than $num1" // If false, display that num2 is greater
+fi                          // End the if-else statement
+
+
+output:
+
+Num1: 
+7
+num2
+5
+7 is greater than 5
+
+
+
+//7) Create simple calculator using "expr" command same as the question 3
+echo "Enter the first number:"
+read num1
+
+echo "Enter the second number:"
+read num2
+
+sum=`expr $num1 + $num2`
+sub=`expr $num1 - $num2`
+div=`expr $num1 / $num2`
+mul=`expr $num1 * $num2`
+
+//display the summation,substraction,multiplication,division
+echo "Summation:$sum"
+echo "Substraction:$sub"
+echo "Division:$div"
+echo "Multiplication:$mul"
+
+output:
+
+Enter num1: 
+10
+Enter num2: 
+5
+Summation: 15
+Substraction: 5
+Multiplication: 50
+Division: 2
