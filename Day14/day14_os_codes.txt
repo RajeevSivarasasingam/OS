@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main() {
+    pid_t pid;
+    int sum_child = 0, sum_parent = 0, total_sum = 0;
+
+    pid = fork(); // Create child process
+
+    if (pid == 0) { // Child process
+        printf("Child process:\n");
+        for (int i = 1; i <= 5; i++) {
+            printf("%d\n", i);
+            sum_child += i;
+        }
+        printf("Sum by child: %d\n", sum_child);
+    } else { // Parent process
+        wait(NULL); // Wait for child to finish
+        printf("Parent process:\n");
+        for (int i = 6; i <= 10; i++) {
+            printf("%d\n", i);
+            sum_parent += i;
+        }
+        printf("Sum by parent: %d\n", sum_parent);
+        total_sum = sum_child + sum_parent;
+        printf("Total sum: %d\n", total_sum);
+    }
+
+    return 0;
+}
+
+
+
+
+
+#include <stdio.h>
+#include<unistd.h>
+ 
+int main() {
+   int fork();
+	pritf("Hello world\n");
+         
+    return 0;
+}
+
+//Output: 
+ Hello world
+ Hello world
+
+
+//////////
+
+#include <stdio.h>
+#include<unistd.h>
+ 
+int main() {
+   int f=fork();
+	//pritf("01. Hello world\n");
+	if(f==0)
+	{
+		printf("I am parent process! \n");
+	}else{
+		printf("I am child process \n");
+	}
+         
+    return 0;
+}
+// Output: 
+I am child process
+I am parent process!
+
+/////// 
+//print numbers from 1 to 10 and
+// 1 to 5 should be print by child process and
+// form 6 to 10 should be parent process
+// calculate summation of those numbers
+#include <stdio.h>
+#include<unistd.h>
+ 
+int main() {
+   int id =fork();
+   int n;
+	//pritf("01. Hello world\n");
+	if(id==0)
+	{	
+		 n=1;
+	}else{
+		 n=6;
+	}
+	
+	for(int i=n;i<n+5;i++)
+	{
+		printf("\n");
+	}
+         
+    return 0;
+}
+
+
