@@ -1,0 +1,168 @@
+#include<stdio.h>
+#include<unistd.h>
+
+int main()
+{
+	printf("\n Hello World");
+	int f=fork();		//copying the process
+	int p=getpid();
+	
+	printf("\n the pid is %d",p);
+	printf("\n the pid is %d",f);
+
+	return 0;
+
+}
+//output: 
+
+
+/************************************************/
+#include<stdio.h>
+#include<unistd.h>
+
+int main()
+{
+	fork();
+	fork();
+	//if add one more fork all code copy output come two times
+	printf("\n Hello World \n");
+
+	return 0;
+
+}
+//output: 
+ Hello World
+
+ Hello World
+
+
+ Hello World
+ Hello World
+
+
+/********************************************/
+#include<stdio.h>
+#include<unistd.h>
+
+int main()
+{
+	int f=fork();
+	 
+	printf("\n Hello \n");
+	
+	if(f==0){
+		printf("I am child \n")
+	}
+	printf("Iam parent");
+	 
+	return 0;
+
+}
+//output:
+ Hello
+Iam parent
+ Hello
+I am child
+Iam parent
+
+/********************************************/
+ 
+#include<stdio.h>
+#include<unistd.h>
+
+int main()
+{
+	int f=fork();
+	if(f==0){
+		printf("I am child \n")
+	}
+	else{
+	printf("I am parent");
+	}
+	 
+	return 0;
+
+}
+//Output:
+Iam parent
+I am child 
+
+/********************************************/
+#include<stdio.h>
+#include<unistd.h>
+
+int main()
+{
+	int f=fork();
+	int f1=fork();
+printf("\n Hello \n");
+	if(f==0){
+		
+		printf("I am  child");
+ 	}
+	else if(f1==0){
+			printf("I am sibiling\n");
+	}
+	else{
+		
+	}
+	
+	 
+	 
+	return 0;
+
+}
+ 
+/********************************************/
+ #include<stdio.h>
+#include<unistd.h>
+int main()
+{
+	int f=fork();
+	if(f==0)
+	{
+	printf("I am child\n");
+	printf("My parent ID %d\n",getpid());
+	}
+	else
+	{
+		
+		int f1=fork();
+		if(f1==0)
+		{
+		printf("I am sibiling\n");
+			printf("My parent ID %d\n",getpid());
+		}
+		else
+		{
+			printf("I am parent\n ");
+			printf("My ID %d\n",getpid());
+			printf("My parent ID %d\n",getpid());
+		}
+	}
+	return 0;
+}
+//output:
+I am parent
+ My ID 25475
+My parent ID 25475
+I am child
+My parent ID 25476
+I am sibiling
+My parent ID 25477
+
+
+#include<stdio.h>
+#include<unistd.h>
+
+int main()
+{
+	printf("\n Hello World");
+	int f=fork();
+	int p=getpid();
+	
+	printf("\n the pid is %d",p);
+	printf("\n the pid is %d",f);
+	
+	return 0;
+}
