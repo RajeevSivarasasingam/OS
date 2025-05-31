@@ -1,0 +1,225 @@
+
+if(condition){
+	//body statement;
+}
+else{
+	//body of else
+	}
+	
+#### Ternary operator
+test_condtion ? expression1 : expression2;
+
+
+
+### Switch case
+switch(variable/expression){
+	case1:
+	//code
+	case2:
+	//code
+	
+	defalut:
+	//code
+}
+
+		Eg1: find weekdays(1-7);
+		
+		Eg2:  based on life path number calculate
+		
+		Date:23
+		//calculate life path number
+			 a=date%10	//3
+			 b=date/10	//2
+			 c=a+b		//5
+			 
+		if life path number:
+									1:Lucky
+									2:Carefully do your work
+									3:Stronger
+									4:Happy
+									5:Can get help		//ans
+									6:Doubt
+									7:Sad
+									8:Like
+									9:Courage
+
+		
+		
+	//factorial	
+	
+#include <stdio.h>
+int main(){
+
+int n;
+long long int fact =1;
+printf("Enter Number for find factorial: ");
+scanf("%d",&n);
+
+
+if (n<0){
+    printf("Type postive number! \n");
+}
+else{
+    for(int i=1;i<=n;i++)
+    {
+		fact*=i;
+    }
+	printf("Ans: ",fact);
+}
+
+	return 0;
+
+}
+	
+		
+//febonacci		
+		
+#include <stdio.h>
+int main(){
+
+	int a=0, b=1,next;
+
+	int n;
+	printf("Enter a number: ");
+	scanf("%d",&n);
+
+	for(int i=1;i<=n;i++)
+	{
+		 if(i == 1)
+		 {
+			 printf("%d",a);
+		 }else if(i == 2){
+			 printf("%d",b);
+		 }else{
+			 next = a+b;
+			 printf("%d",next);
+			 a=b;
+			 b=next;
+		 }
+		 printf("\n");
+	}
+
+	return 0;
+}
+		
+	//if else
+#include <stdio.h>
+
+int main() {
+
+  int age=0;
+  printf("Enter your age: ");
+  scanf("%d",&age);
+
+  if(age>=18 && age<=100)
+  {
+	  printf("\n You are eleigible for voting,you can vote \n");
+  }
+  else
+  {
+	  printf("\n you  are not eleigible for voting \n");
+  }
+return 0;
+
+
+}
+
+	
+		
+//switch case		
+		
+		
+	#include <stdio.h>
+
+int main(){
+
+	int n;
+	printf("Enter a number between (1-7): ");
+	scanf("%d",&n);
+
+	switch(n)
+	{
+		case 1:
+		printf("Sunday \n");
+		break;
+		case 2:
+		printf("Monday \n");
+		break;
+		case 3:
+		printf("Tuesday \n");
+		break;
+		case 4:
+		printf("Wednesday \n");
+		break;
+		case 5:
+		printf("Thursday \n");
+		break;
+		case 6:
+		printf("Friday \n");
+		break;
+		case 7:
+		printf("Saturday \n");
+		break;
+
+		default:
+		printf("Invalid Input \n");
+		break;
+	}
+
+	int x;
+	printf("Enter  Your date of birth: ");
+	scanf("%d",&x);
+
+	int a=x%10;
+	int b=x/10;
+	int c=a+b;
+
+	switch(c){
+	case 1:printf("Lucky");
+	break;
+	case 2:printf("Carefully do your work");
+	break;
+	case 3:printf("Stronger");
+	break;
+	case 4:printf("Happy");
+	break;
+	case 5:printf("Can get help	\n");
+	break;
+	case 6:printf("Doubt	\n");
+	break;
+	case 7:printf("Sad	\n");
+	break;
+	case 8:printf("Like	\n");
+	break;
+	case 9:printf("Courage	\n");
+	break;
+
+	 default: printf("Invalid input");
+	 break;
+
+	}
+	return 0;
+}
+	
+	//ternary	
+		
+		
+
+#include <stdio.h>
+
+int main() {
+
+  int age=0;
+  printf("Enter your age: ");
+  scanf("%d",&age);
+
+   (age>=18)? printf("you can vote") : printf("you can not vote \n"); // use ternary opraters
+
+
+}
+
+		
+		
+		
+		
+		
