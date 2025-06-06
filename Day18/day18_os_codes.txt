@@ -1,0 +1,103 @@
+
+
+[2021ict102@fedora ~]$ touch progFile1
+[2021ict102@fedora ~]$ chmod 644 progFile1
+[2021ict102@fedora ~]$
+
+Exercise:
+ IPC using Message Queue
+ 
+ read input form the parent process
+ Enter Name: Hi 
+ Enter RegNo: 2323
+ Enter Age: 23
+ 
+ Message sent sucessfully...
+ 
+ give the output from the child process
+ 
+ Resevied Nmae: Hi
+ Recevied RegNo: 2323
+ Recevied Age:23
+ 
+		//Ans.................
+  
+//send 
+
+#include<stdio.h>
+#include<sys/ipc.h>
+#include<sys/msg.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <string.h>
+
+#define MAX 100
+//structure for meassage queue
+struct mesg_buffer{
+	long mesg_type;
+	char name[50];
+	char regNo[20];
+	int age;
+	}
+	message;
+	
+	int main()
+	{	pid_t child = fork();
+		key_t key;
+		int msgid;
+		key = ftok("progFile1",102);	//for ftok to generate unique key
+		msgid = msgget(key,0666 | IPC_CREAT);	//mesget creates a meassage queue
+		
+		if(child==0){//child for output 
+					//msgrcv to receive  meassage
+					msgrcv(msgid, &message, sizeof(message),1,0);
+					//display the meassage
+					 printf("\nReceived Name: %s", message.name);
+					 printf("\nReceived RegNo: %s", message.regNo);
+					 printf("\nReceived Age: %d\n", message.age);
+					//to destroy the message queue
+					msgctl(msgid,IPC_RMID,NULL);
+		}
+		else{//   parent for input 
+				 
+				message.mesg_type = 1;
+				printf("Enter Name: ");
+				fgets(message.name,50,stdin);
+				printf("Enter RegNo: ");
+				fgets(message.regNo,20,stdin);
+				printf("Enter Age: ");
+				scanf("%d",&message.age);
+				
+ 				//msgsnd to  send meassage
+				msgsnd(msgid,&message,sizeof(message),0);
+				
+				//display the message
+				printf("Message Sent Sucessfully!!!!! \n" );
+				
+		}
+	return 0;
+	}
+	
+ //Output::
+       |                                 
+[2021ict102@fedora ~]$ rm prc.c
+[2021ict102@fedora ~]$ vi prc.c
+[2021ict102@fedora ~]$ gcc prc.c -o prc
+[2021ict102@fedora ~]$ ./vi
+-bash: ./vi: No such file or directory
+[2021ict102@fedora ~]$ ./prc
+Enter Name: Raj
+Enter RegNo: ict22
+Enter Age: 24
+Message Sent Sucessfully!!!!!
+
+Received Name: Raj
+
+Received RegNo: ict22
+
+Received Age: 24
+[2021ict102@fedora ~]$
+
+
+
+
