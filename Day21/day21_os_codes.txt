@@ -1,0 +1,245 @@
+ Exercise: 
+
+1.read two input from user(//parent process)
+	name:
+	regno:
+	age:
+
+2.print the output form the child(//child process)
+	 name:abc
+	 regno:2021ict102
+	 age:25
+	 
+//::Ans
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+int main() {
+    char name[50];
+    char regno[20];
+    int age;
+
+    // Parent process: Read user input
+    printf("Enter name: ");
+    scanf("%s", name);
+    printf("Enter registration number: ");
+    scanf("%s", regno);
+    printf("Enter age: ");
+    scanf("%d", &age);
+
+    pid_t pid = fork(); // Create a child process
+
+    if (pid < 0) {
+        printf("Fork failed\n");
+        return 1;
+    } else if (pid == 0) {
+        // Child process: Print the output
+        printf("\n--- Child Process Output ---\n");
+        printf("Name: %s\n", name);
+        printf("Registration Number: %s\n", regno);
+        printf("Age: %d\n", age);
+    } else {
+        // Parent process: Wait for the child to finish
+        wait(NULL);
+    }
+
+    return 0;
+}
+
+
+
+//Output::
+[2021ict102@fedora ~]$ ./prc
+Enter name: Raj
+Enter registration number: 2021ict12
+Enter age: 22
+
+--- Child Process Output ---
+Name: Raj
+Registration Number: 2021ict12
+Age: 22
+[2021ict102@fedora ~]$
+
+///************************************************************************
+
+::: using pipe
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+int main() {
+    char name[50];
+    char regno[20];
+    int age;
+    int pipefd[2]; // Pipe file descriptors
+    pid_t pid;
+
+    // Create pipe
+    if (pipe(pipefd) == -1) {
+        perror("Pipe failed");
+        return 1;
+    }
+
+    // Fork a child process
+    pid = fork();
+
+    if (pid < 0) {
+        perror("Fork failed");
+        return 1;
+    }
+
+    if (pid > 0) {
+        // Parent Process: Read input and send data through the pipe
+        printf("Enter name: ");
+        scanf("%s", name);
+        printf("Enter registration number: ");
+        scanf("%s", regno);
+        printf("Enter age: ");
+        scanf("%d", &age);
+
+        close(pipefd[0]); // Close unused read end
+        write(pipefd[1], name, sizeof(name));
+        write(pipefd[1], regno, sizeof(regno));
+        write(pipefd[1], &age, sizeof(age));
+        close(pipefd[1]); // Close write end after sending data
+
+        // Wait for the child process to finish
+        wait(NULL);
+    } else {
+        // Child Process: Read data from the pipe and display output
+        close(pipefd[1]); // Close unused write end
+        read(pipefd[0], name, sizeof(name));
+        read(pipefd[0], regno, sizeof(regno));
+        read(pipefd[0], &age, sizeof(age));
+        close(pipefd[0]); // Close read end after receiving data
+
+        printf("\n--- Child Process Output ---\n");
+        printf("Name: %s\n", name);
+        printf("Registration Number: %s\n", regno);
+        printf("Age: %d\n", age);
+    }
+
+    return 0;
+}
+
+ /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+int main() {
+	
+	if()
+	{
+		
+	}else{
+		while((nbytes = read(p[0],inbuf,MSGSSIZE))=>0)
+			printf("%s /n",inbuf);
+		if(nbytes != 0)
+			exit(2);
+		printf("Finished reading");
+	}
+     
+     
+
+    return 0;
+} 
+  
+  
+  /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+ 
+  EX::
+  Area calculation program
+  Circle => C
+  Triangle => T
+  Square => S
+  Rectangle => R
+  Enter your choice: C
+  
+  Example output::
+  Circle area calculation:
+  Enter the radius: 20.9
+  Area is:1371.58
+  
+  
+  
+  
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+float CircleArea(float radius){
+	return 3.14159 * radius * radius;
+}
+
+float TriangleArea(float base, float height){
+	return  0.5 * base * height;
+}
+
+float SquareArea(float side){
+	return  side * side ;
+}
+
+float  RectangleArea(float length,float width ){
+	return  length * width;
+}
+
+
+int main() {
+	
+	 
+	 char choice;
+		
+	 
+	 pid_t pid;
+	 pid = fork();
+	 
+	 if(pid<0){
+		 printf("fork faild!")
+		 return 1;
+	 }
+	 if(pid > 0 ){
+		 
+		printf("Area Calculation Program\n");
+		printf("Circle => C\nTriangle => T\nSquare => S\nRectangle => R\n");
+        printf("Enter your choice: ");
+        scanf(" %c", &choice);
+		
+		 switch(choice)
+	 {
+		 case 'C':			//for circle
+		 
+		 break;
+		 
+		 case 'T':			//for triancle
+		 
+		 break; 
+		 
+		 case 'S':			//for sequre
+		 
+		 break;
+		 
+		 case 'R':			//for retangle
+		 
+		 break;
+		 
+		 default:
+		  printf("Invalid choice!!");
+		  break;
+	 }
+		
+	 }
+	 
+	
+	
+
+    return 0;
+}
+
+
